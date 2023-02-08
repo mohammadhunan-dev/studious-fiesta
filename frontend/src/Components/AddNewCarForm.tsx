@@ -37,7 +37,7 @@ const AddNewCarForm = () => {
             paddingBottom: 10,
             
         }}>
-            <h1>User: {user?.email}</h1>
+            <h3>User: {user?.email}</h3>
             <h3>Add car to keep track of</h3>
             <TextField
                 onChange={onNewCarNameChange}

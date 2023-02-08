@@ -22,10 +22,8 @@ import { firebaseApp } from "../Firebase/firebase-app";
 const theme = createTheme();
 
 export default function Authenticator() {
-  const { alertMessage, setAlertMessage } = useAlert();
+  const { alertMessage, setTemporaryAlertMessage } = useAlert();
   const user = useUser();
-
-  console.log(alertMessage);
   const [mode, setMode] = useState('SignUp');
 
   // Initialize Firebase Authentication and get a reference to the service
@@ -44,27 +42,19 @@ export default function Authenticator() {
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed Up 
-        setTimeout(() => {
-          console.log('does user exist in authenticator?', user )
-          navigate('/home');
-        }, 5000)
-
-        
+        navigate('/home');
       })
       .catch((error) => {
-        setAlertMessage(error.message);
+        setTemporaryAlertMessage(error.message);
       });
     }else{
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
-        setTimeout(() => {
-          console.log('does user exist in authenticator?', user )
-          navigate('/home');
-        }, 5000)
+        navigate('/home');
       })
       .catch((error) => {
-        setAlertMessage(error.message);
+        setTemporaryAlertMessage(error.message);
       });
     }
     console.log({
