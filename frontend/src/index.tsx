@@ -1,31 +1,59 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import AuthView from './Views/AuthView';
 import HomeView from './Views/HomeView';
 import reportWebVitals from './reportWebVitals';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/home",
-    element: <HomeView />,
-  },
-]);
+import { BrowserRouter,Route, Routes, Navigate} from "react-router-dom"
+import { AlertProvider } from './Hooks/AlertProvider';
+import { UserProvider } from './Hooks/UserProvider';
+import { useUser } from './Hooks/UserProvider';
+import AlertDisplay from './Components/AlertDisplay';
+import Copyright from './Components/CopyRight';
+
+
+const AppWrapper = () => {
+  return (
+    <div className="View-wrapper">
+    <header className="App-header">
+      <p>
+        Ticket Hero
+      </p>
+      <Routes>
+        <Route path="/" element={<AuthView />} />
+        <Route path="/home" element={<HomeViewWrapper />} />
+      </Routes>
+      <AlertDisplay />
+      <Copyright sx={{ mt: 8, mb: 4 }} />
+    </header>
+  </div>
+  )
+}
+
+const HomeViewWrapper = () => {
+  const user = useUser();
+  if(!user) return (<Navigate to="/" />);
+  return (
+    <HomeView />
+  );
+}
+
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <AlertProvider>
+        <BrowserRouter>
+          <AppWrapper />
+        </BrowserRouter>
+      </AlertProvider>
+    </UserProvider>
+     
   </React.StrictMode>
 );
 

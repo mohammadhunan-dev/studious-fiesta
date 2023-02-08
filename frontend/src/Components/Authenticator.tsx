@@ -13,35 +13,23 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { useAlert } from '../Hooks/AlertProvider';
+import { useUser } from '../Hooks/UserProvider';
 import { useNavigate } from 'react-router-dom';
+import { firebaseApp } from "../Firebase/firebase-app";
 
 
 const theme = createTheme();
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC0XHSbWAHF1SsiZMMGLQgVB1OxmHj3fts",
-  authDomain: "tickethero-d1634.firebaseapp.com",
-  projectId: "tickethero-d1634",
-  storageBucket: "tickethero-d1634.appspot.com",
-  messagingSenderId: "306282224899",
-  appId: "1:306282224899:web:2d91e097cfb2e0e7289d36",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
 export default function Authenticator() {
   const { alertMessage, setAlertMessage } = useAlert();
+  const user = useUser();
 
   console.log(alertMessage);
   const [mode, setMode] = useState('SignUp');
 
   // Initialize Firebase Authentication and get a reference to the service
-  const auth = getAuth(app);
+  const auth = getAuth(firebaseApp);
   
   // react router navigation hook
   const navigate = useNavigate();
@@ -56,8 +44,12 @@ export default function Authenticator() {
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed Up 
-        const user = userCredential.user;
-        navigate('/home');
+        setTimeout(() => {
+          console.log('does user exist in authenticator?', user )
+          navigate('/home');
+        }, 5000)
+
+        
       })
       .catch((error) => {
         setAlertMessage(error.message);
@@ -66,8 +58,10 @@ export default function Authenticator() {
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
-        const user = userCredential.user;
-        navigate('/home');
+        setTimeout(() => {
+          console.log('does user exist in authenticator?', user )
+          navigate('/home');
+        }, 5000)
       })
       .catch((error) => {
         setAlertMessage(error.message);
