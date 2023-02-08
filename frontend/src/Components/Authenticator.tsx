@@ -13,7 +13,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { firebaseApp } from '../Firebase/firebase-app';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { useAlert } from '../Hooks/AlertProvider';
