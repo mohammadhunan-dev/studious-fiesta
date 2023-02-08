@@ -1,6 +1,8 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const sgMail = require("@sendgrid/mail");
+const express = require('express');
+const cors = require('cors');
 
 // initialize firebase admin
 admin.initializeApp();
@@ -39,6 +41,8 @@ exports.helloWorld = functions.https.onRequest((_request, response) => {
     response.send("attempted to send emails to all users");
   });
 });
+
+exports.addNewCar = functions.https.onRequest((request, response) => { });
 
 exports.scheduledFunction = functions.pubsub.schedule("every monday 09:00")
     .onRun((_context) => {

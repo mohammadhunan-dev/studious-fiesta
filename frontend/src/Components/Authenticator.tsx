@@ -17,6 +17,8 @@ import { firebaseApp } from '../Firebase/firebase-app';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { useAlert } from '../Hooks/AlertProvider';
+import { useNavigate } from 'react-router-dom';
+
 
 const theme = createTheme();
 
@@ -41,6 +43,9 @@ export default function Authenticator() {
 
   // Initialize Firebase Authentication and get a reference to the service
   const auth = getAuth(app);
+  
+  // react router navigation hook
+  const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -53,21 +58,17 @@ export default function Authenticator() {
       .then((userCredential) => {
         // Signed Up 
         const user = userCredential.user;
-        console.log('user signed up', user)
-        // ...
+        navigate('/home');
       })
       .catch((error) => {
         setAlertMessage(error.message);
-
-
       });
     }else{
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log('user signed in', user)
-        // ...
+        navigate('/home');
       })
       .catch((error) => {
         setAlertMessage(error.message);

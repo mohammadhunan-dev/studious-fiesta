@@ -23,7 +23,7 @@ function Copyright(props: any) {
 function App() {
   return (
     <AlertProvider>
-      <div className="App">
+      <div className="View-wrapper">
         <header className="App-header">
           <p>
             Ticket Hero

@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
-import '../Styles/GlobalStyles.css';
+import React from "react";
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { TextField, Button, Stack, Box } from '@mui/material';
-import AddNewCarForm from '../Components/AddNewCarForm';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
 const stubCarsData = [
     {
@@ -68,39 +66,29 @@ const columns: GridColDef[] = [
     },
 ];
 
-
-
-const HomeView = () => {
+const TicketList = () => {
     return (
-        <div className="View-wrapper">
-            <h1>Ticket Hero</h1>
-            <div className="Home-header">
-                <AddNewCarForm />
-                {
-                    stubCarsData.map((car, index) => {
-                        console.log(car.tickets)
-                        // const columns: GridColDef[] = [car.tickets]
-                        return (
-                            <div key={index}>
-                                <h3>{car.name}</h3>
-                                <p>{car.licensePlateNumber}</p>
-                                <Box sx={{ height: 400, width: 750 }}>
-                                    <DataGrid
-                                        rows={car.tickets}
-                                        columns={columns}
-                                        disableSelectionOnClick
-                                        experimentalFeatures={{ }}
-                                    />
-                                </Box>
-                            </div>
-                        )
-                    })
-                }
-
-    
-            </div>
+        <div>
+            {
+                stubCarsData.map((car, index) => {
+                    return (
+                        <div key={index}>
+                            <h3>{car.name}</h3>
+                            <p>{car.licensePlateNumber}</p>
+                            <Box sx={{ height: 400, width: 750 }}>
+                                <DataGrid
+                                    rows={car.tickets}
+                                    columns={columns}
+                                    disableSelectionOnClick
+                                    experimentalFeatures={{ }}
+                                />
+                            </Box>
+                        </div>
+                    )
+                })
+            }
         </div>
-    );    
-};
+    );
+}
 
-export default HomeView;
+export default TicketList;
