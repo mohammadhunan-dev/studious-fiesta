@@ -150,7 +150,7 @@ export default function Authenticator() {
 
               <Button href="#" onClick={toggleMode} size="small">
                 {
-                  mode == 'SignUp'? "Don't have an account? Sign Up" : "Already have an account? Sign In"
+                  mode == 'SignUp'? "Already have an account? Sign In": "Don't have an account? Sign Up" 
                 }
               </Button>
   
