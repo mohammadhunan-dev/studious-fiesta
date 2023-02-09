@@ -78,17 +78,7 @@ const columns: GridColDef[] = [
     {
         ...baseGridColumn,
         field: 'amount_due',
-        headerName: 'Amount Due (Still Owed)',
-    },
-    {
-        ...baseGridColumn,
-        field: 'amount_due',
-        headerName: 'Amount Due (Still Owed)',
-    },
-    {
-        ...baseGridColumn,
-        field: 'summons_image.url',
-        headerName: 'Summons Image URL',
+        headerName: 'Amount Due',
     },
 ];
 
@@ -109,9 +99,6 @@ interface Ticket {
     penalty_amount: string;
     payment_amount: string;
     amount_due: string;
-    summons_image: {
-        url: string;
-    }
 }
 
 interface Tickets extends Array<Ticket> { }
@@ -153,15 +140,11 @@ const TicketList = () => {
             })
             Promise.all(urls.map(url => fetch(url)))
             .then(responses => Promise.all(responses.map(r => r.json())))
-            .then(tickets => {
-                const newCars: Cars = [];
-                
+            .then(tickets => {                
                 tempCarsList.forEach((car, index) => {
-                    const tempCar = car;
-                    tempCar.tickets = tickets[index];
-                    newCars.push(tempCar);
+                    car.tickets = tickets[index];
                 })
-                setCars(newCars)
+                setCars(tempCarsList)
             })
             .catch((err) =>{
                 console.log('an error occurred while getting your tickets', err);
@@ -185,7 +168,7 @@ const TicketList = () => {
                             <p>{car.carLicensePlate}</p>
                             <p>{car.tickets.length}</p>
                             <div>
-                                {/* <Box sx={{ height: 400, width: 750 }}>
+                                <Box sx={{ height: 400, width: 1100 }}>
                                     <DataGrid
                                         rows={car.tickets}
                                         columns={columns}
@@ -193,7 +176,7 @@ const TicketList = () => {
                                         experimentalFeatures={{ }}
                                         getRowId={(row) => row.summons_number}
                                     />
-                                </Box> */}
+                                </Box>
                             </div>
 
                             {
