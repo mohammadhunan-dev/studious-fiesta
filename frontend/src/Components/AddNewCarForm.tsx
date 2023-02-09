@@ -17,7 +17,7 @@ const AddNewCarForm = () => {
             body: JSON.stringify({
                 carName,
                 carLicensePlate,
-                userEmail: user?.email
+                user_id: user?.uid
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
