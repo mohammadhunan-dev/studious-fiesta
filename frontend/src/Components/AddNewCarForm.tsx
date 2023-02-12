@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import '../Styles/GlobalStyles.css';
 import { TextField, Button, Stack } from '@mui/material';
 import { useUser } from '../Hooks/UserProvider';
+import { alpha, styled } from '@mui/material/styles';
+
 
 const AddNewCarForm = () => {
     const [carName, setCarName] = useState<string>("");
@@ -35,19 +37,23 @@ const AddNewCarForm = () => {
             paddingLeft: 10,
             paddingRight: 10,
             paddingBottom: 10,
+            backgroundImage: "linear-gradient(40deg, #DBDBFC, #FFF3FD)"
             
         }}>
-            <h3>User: {user?.email}</h3>
-            <h3>Add car to keep track of</h3>
+            <h3 style={{marginBottom: 0}}>User: {user?.email}</h3>
+            <p style={{fontSize: 20}}>Add car to keep track of</p>
             <TextField
                 onChange={onNewCarNameChange}
                 value={carName}
                 label={"Car Name (make and model)"}
+                className="white"
+                variant="filled"
             />
             <TextField
                 onChange={onNewLicensePlateChange}
                 value={carLicensePlate}
                 label={"License Plate #"}
+                variant="filled"
             />
             <Button onClick={handleSubmit} variant="contained">Submit</Button>
         </Stack>
