@@ -145,6 +145,7 @@ exports.scheduledFunction = functions.pubsub.schedule("every monday 09:00")
       return null;
     });
 
+// send mail to all users, can use this to send info about their tickets to all users
 exports.scheduledFunctionEveryTwoMinutes = functions.pubsub.schedule("every 2 minutes")
     .onRun((_context) => {
       console.log("This will be run every 2 minutes");
