@@ -6,12 +6,12 @@ import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC0XHSbWAHF1SsiZMMGLQgVB1OxmHj3fts",
-  authDomain: "tickethero-d1634.firebaseapp.com",
-  projectId: "tickethero-d1634",
-  storageBucket: "tickethero-d1634.appspot.com",
-  messagingSenderId: "306282224899",
-  appId: "1:306282224899:web:2d91e097cfb2e0e7289d36",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase

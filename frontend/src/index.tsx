@@ -5,7 +5,7 @@ import AuthView from './Views/AuthView';
 import HomeView from './Views/HomeView';
 import reportWebVitals from './reportWebVitals';
 
-import { BrowserRouter,Route, Routes, Navigate} from "react-router-dom"
+import { HashRouter,Route, Routes, Navigate} from "react-router-dom"
 import { AlertProvider } from './Hooks/AlertProvider';
 import { UserProvider } from './Hooks/UserProvider';
 import { useUser } from './Hooks/UserProvider';
@@ -48,9 +48,9 @@ root.render(
   <React.StrictMode>
     <UserProvider>
       <AlertProvider>
-        <BrowserRouter>
+        <HashRouter>
           <AppWrapper />
-        </BrowserRouter>
+        </HashRouter>
       </AlertProvider>
     </UserProvider>
      
