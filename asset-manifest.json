@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/studious-fiesta/static/css/main.5749d5e8.css",
-    "main.js": "/studious-fiesta/static/js/main.e0760492.js",
+    "main.js": "/studious-fiesta/static/js/main.2f66ec56.js",
     "static/js/787.cda612ba.chunk.js": "/studious-fiesta/static/js/787.cda612ba.chunk.js",
     "index.html": "/studious-fiesta/index.html",
     "main.5749d5e8.css.map": "/studious-fiesta/static/css/main.5749d5e8.css.map",
-    "main.e0760492.js.map": "/studious-fiesta/static/js/main.e0760492.js.map",
+    "main.2f66ec56.js.map": "/studious-fiesta/static/js/main.2f66ec56.js.map",
     "787.cda612ba.chunk.js.map": "/studious-fiesta/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5749d5e8.css",
-    "static/js/main.e0760492.js"
+    "static/js/main.2f66ec56.js"
   ]
 }
